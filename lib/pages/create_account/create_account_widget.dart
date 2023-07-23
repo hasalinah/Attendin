@@ -89,30 +89,29 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 70.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        'assets/images/Screenshot_2023-06-30_at_7.45.02_PM.png',
-                        width: 160.0,
-                        height: 40.0,
-                        fit: BoxFit.fitWidth,
-                      ),
-                    ],
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                  child: Image.asset(
+                    'assets/images/Screenshot_2023-06-30_at_7.45.02_PM.png',
+                    width: 342.0,
+                    height: 42.0,
+                    fit: BoxFit.fitWidth,
                   ),
                 ),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Text(
-                      'Get Started',
-                      style: FlutterFlowTheme.of(context).displaySmall.override(
-                            fontFamily: 'Outfit',
-                            color: FlutterFlowTheme.of(context).alternate,
-                            fontSize: 36.0,
-                          ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+                      child: Text(
+                        'Get Started',
+                        style:
+                            FlutterFlowTheme.of(context).displaySmall.override(
+                                  fontFamily: 'Outfit',
+                                  color: FlutterFlowTheme.of(context).alternate,
+                                  fontSize: 36.0,
+                                ),
+                      ),
                     ),
                   ],
                 ),
