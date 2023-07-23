@@ -50,6 +50,8 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
           hoverColor: Colors.transparent,
           highlightColor: Colors.transparent,
           onTap: () async {
+            logFirebaseEvent('CHANGE_PASSWORD_Icon_k3wijywd_ON_TAP');
+            logFirebaseEvent('Icon_navigate_back');
             context.pop();
           },
           child: Icon(
@@ -75,7 +77,6 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
               controller: _model.emailFieldController,
               obscureText: false,
               decoration: InputDecoration(
-                labelText: 'Your email address',
                 labelStyle: FlutterFlowTheme.of(context).bodySmall,
                 hintText: 'Enter your email here...',
                 hintStyle: FlutterFlowTheme.of(context).bodySmall,
@@ -136,6 +137,8 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
             child: FFButtonWidget(
               onPressed: () async {
+                logFirebaseEvent('CHANGE_PASSWORD_PAGE_Button-Login_ON_TAP');
+                logFirebaseEvent('Button-Login_auth');
                 if (_model.emailFieldController.text.isEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(

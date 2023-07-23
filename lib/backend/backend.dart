@@ -5,10 +5,10 @@ import '../auth/firebase_auth/auth_util.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import 'schema/util/firestore_util.dart';
 
-import 'schema/users_record.dart';
-import 'schema/product_name_record.dart';
-import 'schema/payments_record.dart';
-import 'schema/car_appointments_record.dart';
+import 'schema/user_student_record.dart';
+import 'schema/attendance_record.dart';
+import 'schema/course_c_r_n_record.dart';
+import 'schema/teacher_list_record.dart';
 
 export 'dart:async' show StreamSubscription;
 export 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,221 +16,157 @@ export 'schema/index.dart';
 export 'schema/util/firestore_util.dart';
 export 'schema/util/schema_util.dart';
 
-export 'schema/users_record.dart';
-export 'schema/product_name_record.dart';
-export 'schema/payments_record.dart';
-export 'schema/car_appointments_record.dart';
+export 'schema/user_student_record.dart';
+export 'schema/attendance_record.dart';
+export 'schema/course_c_r_n_record.dart';
+export 'schema/teacher_list_record.dart';
 
-/// Functions to query UsersRecords (as a Stream and as a Future).
-Future<int> queryUsersRecordCount({
+/// Functions to query UserStudentRecords (as a Stream and as a Future).
+Future<int> queryUserStudentRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      UsersRecord.collection,
+      UserStudentRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<UsersRecord>> queryUsersRecord({
+Stream<List<UserStudentRecord>> queryUserStudentRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      UsersRecord.collection,
-      UsersRecord.fromSnapshot,
+      UserStudentRecord.collection,
+      UserStudentRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<UsersRecord>> queryUsersRecordOnce({
+Future<List<UserStudentRecord>> queryUserStudentRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      UsersRecord.collection,
-      UsersRecord.fromSnapshot,
+      UserStudentRecord.collection,
+      UserStudentRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<FFFirestorePage<UsersRecord>> queryUsersRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      UsersRecord.collection,
-      UsersRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
-/// Functions to query ProductNameRecords (as a Stream and as a Future).
-Future<int> queryProductNameRecordCount({
+/// Functions to query AttendanceRecords (as a Stream and as a Future).
+Future<int> queryAttendanceRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      ProductNameRecord.collection,
+      AttendanceRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<ProductNameRecord>> queryProductNameRecord({
+Stream<List<AttendanceRecord>> queryAttendanceRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      ProductNameRecord.collection,
-      ProductNameRecord.fromSnapshot,
+      AttendanceRecord.collection,
+      AttendanceRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<ProductNameRecord>> queryProductNameRecordOnce({
+Future<List<AttendanceRecord>> queryAttendanceRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      ProductNameRecord.collection,
-      ProductNameRecord.fromSnapshot,
+      AttendanceRecord.collection,
+      AttendanceRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<FFFirestorePage<ProductNameRecord>> queryProductNameRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      ProductNameRecord.collection,
-      ProductNameRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
-/// Functions to query PaymentsRecords (as a Stream and as a Future).
-Future<int> queryPaymentsRecordCount({
+/// Functions to query CourseCRNRecords (as a Stream and as a Future).
+Future<int> queryCourseCRNRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      PaymentsRecord.collection,
+      CourseCRNRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<PaymentsRecord>> queryPaymentsRecord({
+Stream<List<CourseCRNRecord>> queryCourseCRNRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      PaymentsRecord.collection,
-      PaymentsRecord.fromSnapshot,
+      CourseCRNRecord.collection,
+      CourseCRNRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<PaymentsRecord>> queryPaymentsRecordOnce({
+Future<List<CourseCRNRecord>> queryCourseCRNRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      PaymentsRecord.collection,
-      PaymentsRecord.fromSnapshot,
+      CourseCRNRecord.collection,
+      CourseCRNRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<FFFirestorePage<PaymentsRecord>> queryPaymentsRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      PaymentsRecord.collection,
-      PaymentsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
-/// Functions to query CarAppointmentsRecords (as a Stream and as a Future).
-Future<int> queryCarAppointmentsRecordCount({
-  DocumentReference? parent,
+/// Functions to query TeacherListRecords (as a Stream and as a Future).
+Future<int> queryTeacherListRecordCount({
   Query Function(Query)? queryBuilder,
   int limit = -1,
 }) =>
     queryCollectionCount(
-      CarAppointmentsRecord.collection(parent),
+      TeacherListRecord.collection,
       queryBuilder: queryBuilder,
       limit: limit,
     );
 
-Stream<List<CarAppointmentsRecord>> queryCarAppointmentsRecord({
-  DocumentReference? parent,
+Stream<List<TeacherListRecord>> queryTeacherListRecord({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollection(
-      CarAppointmentsRecord.collection(parent),
-      CarAppointmentsRecord.fromSnapshot,
+      TeacherListRecord.collection,
+      TeacherListRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
     );
 
-Future<List<CarAppointmentsRecord>> queryCarAppointmentsRecordOnce({
-  DocumentReference? parent,
+Future<List<TeacherListRecord>> queryTeacherListRecordOnce({
   Query Function(Query)? queryBuilder,
   int limit = -1,
   bool singleRecord = false,
 }) =>
     queryCollectionOnce(
-      CarAppointmentsRecord.collection(parent),
-      CarAppointmentsRecord.fromSnapshot,
+      TeacherListRecord.collection,
+      TeacherListRecord.fromSnapshot,
       queryBuilder: queryBuilder,
       limit: limit,
       singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<CarAppointmentsRecord>> queryCarAppointmentsRecordPage({
-  DocumentReference? parent,
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      CarAppointmentsRecord.collection(parent),
-      CarAppointmentsRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
     );
 
 Future<int> queryCollectionCount(
@@ -361,14 +297,14 @@ Future<FFFirestorePage<T>> queryCollectionPage<T>(
 
 // Creates a Firestore document representing the logged in user if it doesn't yet exist
 Future maybeCreateUser(User user) async {
-  final userRecord = UsersRecord.collection.doc(user.uid);
+  final userRecord = UserStudentRecord.collection.doc(user.uid);
   final userExists = await userRecord.get().then((u) => u.exists);
   if (userExists) {
-    currentUserDocument = await UsersRecord.getDocumentOnce(userRecord);
+    currentUserDocument = await UserStudentRecord.getDocumentOnce(userRecord);
     return;
   }
 
-  final userData = createUsersRecordData(
+  final userData = createUserStudentRecordData(
     email: user.email,
     displayName: user.displayName,
     photoUrl: user.photoURL,
@@ -378,5 +314,11 @@ Future maybeCreateUser(User user) async {
   );
 
   await userRecord.set(userData);
-  currentUserDocument = UsersRecord.getDocumentFromData(userData, userRecord);
+  currentUserDocument =
+      UserStudentRecord.getDocumentFromData(userData, userRecord);
+}
+
+Future updateUserDocument({String? email}) async {
+  await currentUserDocument?.reference
+      .update(createUserStudentRecordData(email: email));
 }

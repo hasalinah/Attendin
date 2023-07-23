@@ -50,6 +50,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
           hoverColor: Colors.transparent,
           highlightColor: Colors.transparent,
           onTap: () async {
+            logFirebaseEvent('FORGOT_PASSWORD_Icon_43m1um9g_ON_TAP');
+            logFirebaseEvent('Icon_navigate_back');
             context.pop();
           },
           child: Icon(
@@ -141,6 +143,8 @@ class _ForgotPasswordWidgetState extends State<ForgotPasswordWidget> {
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
             child: FFButtonWidget(
               onPressed: () async {
+                logFirebaseEvent('FORGOT_PASSWORD_PAGE_Button-Login_ON_TAP');
+                logFirebaseEvent('Button-Login_auth');
                 if (_model.emailFieldController.text.isEmpty) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(

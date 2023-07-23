@@ -79,7 +79,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       'Attend-in',
                       style: FlutterFlowTheme.of(context).displaySmall.override(
                             fontFamily: 'Outfit',
-                            color: Color(0xFF0A85DC),
+                            color: FlutterFlowTheme.of(context).primary,
                             fontSize: 36.0,
                           ),
                     ),
@@ -93,7 +93,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 24.0),
                         child: Text(
-                          'Welcome Students and Falculty ',
+                          'Welcome Students and Faculty ',
                           style: FlutterFlowTheme.of(context)
                               .headlineSmall
                               .override(
@@ -119,7 +119,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                           decoration: InputDecoration(
                             labelText: 'Email Address',
                             labelStyle: FlutterFlowTheme.of(context).bodySmall,
-                            hintText: 'Enter your email here...',
                             hintStyle: FlutterFlowTheme.of(context).bodySmall,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -180,7 +179,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                           decoration: InputDecoration(
                             labelText: 'Password',
                             labelStyle: FlutterFlowTheme.of(context).bodySmall,
-                            hintText: 'Enter your email here...',
                             hintStyle: FlutterFlowTheme.of(context).bodySmall,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -256,6 +254,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent('LOGIN_PAGE_Column_tw0vh8cb_ON_TAP');
+                          logFirebaseEvent('Column_navigate_to');
+
                           context.pushNamed('createAccount');
                         },
                         child: Column(
@@ -288,6 +289,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                       ),
                       FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent('LOGIN_PAGE_Button-Login_ON_TAP');
+                          logFirebaseEvent('Button-Login_auth');
                           GoRouter.of(context).prepareAuthEvent();
 
                           final user = await authManager.signInWithEmail(
@@ -299,7 +302,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                             return;
                           }
 
-                          context.goNamedAuth('HomePage', context.mounted);
+                          logFirebaseEvent('Button-Login_navigate_to');
+
+                          context.pushNamedAuth(
+                              'Studentcheckin', context.mounted);
                         },
                         text: 'Login',
                         options: FFButtonOptions(
@@ -309,7 +315,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               0.0, 0.0, 0.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).info,
+                          color: FlutterFlowTheme.of(context).primary,
                           textStyle:
                               FlutterFlowTheme.of(context).titleMedium.override(
                                     fontFamily: 'Lexend Deca',
@@ -346,6 +352,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     0.0, 12.0, 0.0, 24.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
+                                    logFirebaseEvent(
+                                        'LOGIN_PAGE_Button-ForgotPassword_ON_TAP');
+                                    logFirebaseEvent(
+                                        'Button-ForgotPassword_navigate_to');
+
                                     context.pushNamed('forgotPassword');
                                   },
                                   text: 'Forgot Password?',
@@ -453,6 +464,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     0.0, 12.0, 0.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
+                                    logFirebaseEvent(
+                                        'LOGIN_PAGE_CONTINUE_AS_GUEST_BTN_ON_TAP');
+                                    logFirebaseEvent('Button_auth');
                                     GoRouter.of(context).prepareAuthEvent();
                                     final user = await authManager
                                         .signInAnonymously(context);
@@ -461,7 +475,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     }
 
                                     context.goNamedAuth(
-                                        'HomePage', context.mounted);
+                                        'Studentcheckin', context.mounted);
                                   },
                                   text: 'Continue as Guest',
                                   options: FFButtonOptions(

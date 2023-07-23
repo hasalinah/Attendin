@@ -49,13 +49,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                if (!(Theme.of(context).brightness == Brightness.dark))
-                  Image.asset(
-                    'assets/images/logoDark@3x.png',
-                    width: 200.0,
-                    height: 50.0,
-                    fit: BoxFit.fitHeight,
-                  ),
                 if (Theme.of(context).brightness == Brightness.dark)
                   Image.asset(
                     'assets/images/logoFleetWhite@3x.png',
@@ -96,7 +89,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 20.0),
                                       child: Image.asset(
-                                        'assets/images/fleetCar_1@3x.png',
+                                        'assets/images/Screenshot_2023-06-30_at_7.45.02_PM.png',
                                         width: 350.0,
                                         height: 300.0,
                                         fit: BoxFit.fitWidth,
@@ -112,7 +105,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'Add Cars',
+                                          'Keep Track of Attendance',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
                                               .headlineMedium,
@@ -129,7 +122,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                                     children: [
                                       Expanded(
                                         child: Text(
-                                          'Keep track of all your cars in one application, schedule maintentance.',
+                                          'Keep track of your attendance easily within one app.',
                                           textAlign: TextAlign.center,
                                           style: FlutterFlowTheme.of(context)
                                               .bodySmall,
@@ -322,7 +315,19 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        context.pushNamed('HomePage');
+                        logFirebaseEvent('ONBOARDING_PAGE_CONTINUE_BTN_ON_TAP');
+                        logFirebaseEvent('Button_navigate_to');
+
+                        context.goNamed(
+                          'Studentcheckin',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.fade,
+                              duration: Duration(milliseconds: 0),
+                            ),
+                          },
+                        );
                       },
                       text: 'Continue',
                       options: FFButtonOptions(
@@ -333,13 +338,14 @@ class _OnboardingWidgetState extends State<OnboardingWidget> {
                         iconPadding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).background,
-                        textStyle:
-                            FlutterFlowTheme.of(context).titleMedium.override(
-                                  fontFamily: 'Lexend Deca',
-                                  color: Color(0xFF39D2C0),
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                        textStyle: FlutterFlowTheme.of(context)
+                            .titleMedium
+                            .override(
+                              fontFamily: 'Lexend Deca',
+                              color: FlutterFlowTheme.of(context).customColor3,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w500,
+                            ),
                         elevation: 0.0,
                         borderSide: BorderSide(
                           color: Colors.transparent,

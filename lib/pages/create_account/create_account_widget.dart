@@ -1,5 +1,6 @@
 import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -46,17 +47,38 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: FlutterFlowTheme.of(context).tertiary,
+      appBar: AppBar(
+        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+        automaticallyImplyLeading: false,
+        leading: FlutterFlowIconButton(
+          borderColor: Colors.transparent,
+          borderRadius: 30.0,
+          borderWidth: 1.0,
+          buttonSize: 54.0,
+          icon: Icon(
+            Icons.arrow_back_rounded,
+            color: FlutterFlowTheme.of(context).secondaryText,
+            size: 24.0,
+          ),
+          onPressed: () async {
+            logFirebaseEvent('CREATE_ACCOUNT_arrow_back_rounded_ICN_ON');
+            logFirebaseEvent('IconButton_navigate_back');
+            context.pop();
+          },
+        ),
+        title: Text(
+          'Create Account',
+          style: FlutterFlowTheme.of(context).displaySmall,
+        ),
+        actions: [],
+        centerTitle: false,
+        elevation: 0.0,
+      ),
       body: Container(
         width: MediaQuery.sizeOf(context).width * 1.0,
         height: MediaQuery.sizeOf(context).height * 1.0,
         decoration: BoxDecoration(
           color: FlutterFlowTheme.of(context).tertiary,
-          image: DecorationImage(
-            fit: BoxFit.fitWidth,
-            image: Image.asset(
-              'assets/images/bgFleet@2x.png',
-            ).image,
-          ),
         ),
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
@@ -73,7 +95,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Image.asset(
-                        'assets/images/logoFleetWhite@3x.png',
+                        'assets/images/Screenshot_2023-06-30_at_7.45.02_PM.png',
                         width: 160.0,
                         height: 40.0,
                         fit: BoxFit.fitWidth,
@@ -102,7 +124,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 24.0),
                         child: Text(
-                          'The future of transportation is at your finger tips.',
+                          'The future of attendance is at your fingertips.',
                           style: FlutterFlowTheme.of(context)
                               .headlineSmall
                               .override(
@@ -126,7 +148,6 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                           controller: _model.emailAddressController,
                           obscureText: false,
                           decoration: InputDecoration(
-                            labelText: 'Email Address',
                             labelStyle: FlutterFlowTheme.of(context).bodySmall,
                             hintText: 'Enter your email here...',
                             hintStyle: FlutterFlowTheme.of(context).bodySmall,
@@ -189,9 +210,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                           controller: _model.passwordController,
                           obscureText: !_model.passwordVisibility,
                           decoration: InputDecoration(
-                            labelText: 'Password',
                             labelStyle: FlutterFlowTheme.of(context).bodySmall,
-                            hintText: 'Enter your email here...',
+                            hintText: 'Enter your password here...',
                             hintStyle: FlutterFlowTheme.of(context).bodySmall,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -266,9 +286,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                           controller: _model.confirmPasswordController,
                           obscureText: !_model.confirmPasswordVisibility,
                           decoration: InputDecoration(
-                            labelText: 'Confirm Password',
                             labelStyle: FlutterFlowTheme.of(context).bodySmall,
-                            hintText: 'Use the same passwrod as above...',
+                            hintText: 'Confirm password...',
                             hintStyle: FlutterFlowTheme.of(context).bodySmall,
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
@@ -344,38 +363,48 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'CREATE_ACCOUNT_Column_ci58yan1_ON_TAP');
+                          logFirebaseEvent('Column_navigate_to');
+
                           context.pushNamed('Login');
                         },
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
-                              'Already have an account?',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Lexend Deca',
-                                    color: Colors.white,
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                            ),
-                            Text(
-                              'Login',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Outfit',
-                                    color:
-                                        FlutterFlowTheme.of(context).alternate,
-                                  ),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                logFirebaseEvent(
+                                    'CREATE_ACCOUNT_PAGE_Text_cgg22ke8_ON_TAP');
+                                logFirebaseEvent('Text_navigate_to');
+
+                                context.pushNamed('Login');
+                              },
+                              child: Text(
+                                'Already have an account?',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Lexend Deca',
+                                      color: Colors.white,
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.normal,
+                                    ),
+                              ),
                             ),
                           ],
                         ),
                       ),
                       FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'CREATE_ACCOUNT_PAGE_Button-Login_ON_TAP');
+                          logFirebaseEvent('Button-Login_auth');
                           GoRouter.of(context).prepareAuthEvent();
                           if (_model.passwordController.text !=
                               _model.confirmPasswordController.text) {
@@ -398,7 +427,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                             return;
                           }
 
-                          context.pushNamedAuth('createUser', context.mounted);
+                          logFirebaseEvent('Button-Login_navigate_to');
+
+                          context.pushNamedAuth(
+                              'Studentcheckin', context.mounted);
                         },
                         text: 'Create',
                         options: FFButtonOptions(
@@ -519,19 +551,20 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     0.0, 12.0, 0.0, 44.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    await currentUserReference!
-                                        .update(createUsersRecordData(
-                                      displayName: 'Jane Williams',
-                                    ));
-                                    GoRouter.of(context).prepareAuthEvent();
-                                    final user = await authManager
-                                        .signInAnonymously(context);
-                                    if (user == null) {
-                                      return;
-                                    }
+                                    logFirebaseEvent(
+                                        'CREATE_ACCOUNT_CONTINUE_AS_GUEST_BTN_ON_');
+                                    logFirebaseEvent('Button_backend_call');
 
-                                    context.goNamedAuth(
-                                        'HomePage', context.mounted);
+                                    var attendanceRecordReference =
+                                        AttendanceRecord.collection.doc();
+                                    await attendanceRecordReference
+                                        .set(createAttendanceRecordData());
+                                    _model.recorded =
+                                        AttendanceRecord.getDocumentFromData(
+                                            createAttendanceRecordData(),
+                                            attendanceRecordReference);
+
+                                    setState(() {});
                                   },
                                   text: 'Continue as Guest',
                                   options: FFButtonOptions(

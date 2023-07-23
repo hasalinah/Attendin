@@ -12,6 +12,9 @@ import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter/foundation.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'flutter_flow/firebase_app_check_util.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
@@ -22,6 +25,12 @@ void main() async {
   await initFirebase();
 
   await FlutterFlowTheme.initialize();
+
+  if (!kIsWeb) {
+    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+  }
+
+  await initializeFirebaseAppCheck();
 
   runApp(MyApp());
 }
@@ -108,7 +117,7 @@ class NavBarPage extends StatefulWidget {
 
 /// This is the private State class that goes with NavBarPage.
 class _NavBarPageState extends State<NavBarPage> {
-  String _currentPageName = 'HomePage';
+  String _currentPageName = 'Studentcheckin';
   late Widget? _currentPage;
 
   @override
@@ -121,10 +130,9 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   Widget build(BuildContext context) {
     final tabs = {
-      'HomePage': HomePageWidget(),
-      'payments': PaymentsWidget(),
-      'services': ServicesWidget(),
       'profilePage': ProfilePageWidget(),
+      'Studentcheckin': StudentcheckinWidget(),
+      'attendance': AttendanceWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
 
@@ -145,38 +153,6 @@ class _NavBarPageState extends State<NavBarPage> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.directions_car_outlined,
-              size: 24.0,
-            ),
-            activeIcon: Icon(
-              Icons.directions_car,
-              size: 24.0,
-            ),
-            label: '•',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.attach_money_rounded,
-              size: 24.0,
-            ),
-            activeIcon: Icon(
-              Icons.attach_money_rounded,
-              size: 24.0,
-            ),
-            label: '•',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.car_repair,
-              size: 24.0,
-            ),
-            label: '__',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
               Icons.account_circle_outlined,
               size: 24.0,
             ),
@@ -185,6 +161,21 @@ class _NavBarPageState extends State<NavBarPage> {
               size: 24.0,
             ),
             label: '•',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.playlist_add_check_rounded,
+              size: 24.0,
+            ),
+            label: '',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.calendar_view_day_outlined,
+            ),
+            label: '',
             tooltip: '',
           )
         ],

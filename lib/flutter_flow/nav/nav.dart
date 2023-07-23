@@ -97,64 +97,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => CreateAccountWidget(),
         ),
         FFRoute(
-          name: 'createUser',
-          path: '/createUser',
-          builder: (context, params) => CreateUserWidget(),
-        ),
-        FFRoute(
           name: 'onboarding',
           path: '/onboarding',
+          requireAuth: true,
           builder: (context, params) => OnboardingWidget(),
         ),
         FFRoute(
-          name: 'addCar',
-          path: '/addCar',
-          builder: (context, params) => AddCarWidget(),
+          name: 'addTeacher',
+          path: '/addTeacher',
+          requireAuth: true,
+          builder: (context, params) => AddTeacherWidget(),
         ),
         FFRoute(
           name: 'forgotPassword',
           path: '/forgotPassword',
+          requireAuth: true,
           builder: (context, params) => ForgotPasswordWidget(),
-        ),
-        FFRoute(
-          name: 'HomePage',
-          path: '/homePage',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'HomePage')
-              : HomePageWidget(),
-        ),
-        FFRoute(
-          name: 'carDrivingParked',
-          path: '/carDrivingParked',
-          builder: (context, params) => CarDrivingParkedWidget(),
-        ),
-        FFRoute(
-          name: 'carDriving',
-          path: '/carDriving',
-          builder: (context, params) => CarDrivingWidget(),
-        ),
-        FFRoute(
-          name: 'pastPayment',
-          path: '/pastPayment',
-          builder: (context, params) => PastPaymentWidget(),
-        ),
-        FFRoute(
-          name: 'services',
-          path: '/services',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'services')
-              : ServicesWidget(),
-        ),
-        FFRoute(
-          name: 'payments',
-          path: '/payments',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'payments')
-              : PaymentsWidget(),
         ),
         FFRoute(
           name: 'profilePage',
           path: '/profilePage',
+          requireAuth: true,
           builder: (context, params) => params.isEmpty
               ? NavBarPage(initialPage: 'profilePage')
               : ProfilePageWidget(),
@@ -162,50 +125,51 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'editProfile',
           path: '/editProfile',
+          requireAuth: true,
           builder: (context, params) => EditProfileWidget(
-            userProfile: params.getParam(
-                'userProfile', ParamType.DocumentReference, false, ['users']),
+            userProfile: params.getParam('userProfile',
+                ParamType.DocumentReference, false, ['User_Student']),
           ),
         ),
         FFRoute(
-          name: 'editCar',
-          path: '/editCar',
-          builder: (context, params) => EditCarWidget(
-            carDetails: params.getParam('carDetails',
-                ParamType.DocumentReference, false, ['productName']),
-          ),
+          name: 'addCRN',
+          path: '/addCRN',
+          requireAuth: true,
+          builder: (context, params) => AddCRNWidget(),
         ),
         FFRoute(
           name: 'changePassword',
           path: '/changePassword',
+          requireAuth: true,
           builder: (context, params) => ChangePasswordWidget(),
         ),
         FFRoute(
-          name: 'trackCar',
-          path: '/trackCar',
-          builder: (context, params) => TrackCarWidget(),
+          name: 'Studentcheckin',
+          path: '/studentcheckin',
+          requireAuth: true,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'Studentcheckin')
+              : StudentcheckinWidget(),
         ),
         FFRoute(
-          name: 'paymentComplete',
-          path: '/paymentComplete',
-          builder: (context, params) => PaymentCompleteWidget(),
+          name: 'AttendComplete',
+          path: '/attendComplete',
+          requireAuth: true,
+          builder: (context, params) => AttendCompleteWidget(),
         ),
         FFRoute(
-          name: 'createAppointment',
-          path: '/createAppointment',
-          builder: (context, params) => CreateAppointmentWidget(),
+          name: 'createCRN',
+          path: '/createCRN',
+          requireAuth: true,
+          builder: (context, params) => CreateCRNWidget(),
         ),
         FFRoute(
-          name: 'appointmentDetails',
-          path: '/appointmentDetails',
-          asyncParams: {
-            'appointmentRef': getDoc(['users', 'carAppointments'],
-                CarAppointmentsRecord.fromSnapshot),
-          },
-          builder: (context, params) => AppointmentDetailsWidget(
-            appointmentRef:
-                params.getParam('appointmentRef', ParamType.Document),
-          ),
+          name: 'attendance',
+          path: '/attendance',
+          requireAuth: true,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'attendance')
+              : AttendanceWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -388,8 +352,8 @@ class FFRoute {
               ? Container(
                   color: Colors.transparent,
                   child: Image.asset(
-                    'assets/images/martin-katler-DiJR_M1Mv_A-unsplash.jpg',
-                    fit: BoxFit.cover,
+                    'assets/images/Screenshot_2023-06-30_at_7.45.02_PM.png',
+                    fit: BoxFit.contain,
                   ),
                 )
               : page;
